@@ -18,15 +18,16 @@ export default function MusicPage() {
 
   useEffect(() => {
     const initAudio = async () => {
-      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      const context = new AudioCtx();({
-        sampleRate: 192000,
-      });
+      const AudioCtx =
+        window.AudioContext ||
+        (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const context = new AudioCtx();
       setAudioContext(context);
     };
-
-    initAudio();
-  }, []);
+  
+    initAudio(); // ← この呼び出し
+  
+  }, []); // ← この括弧までちゃんと閉じる
 
 
   // 音楽IDに応じて音声ファイルを取得
