@@ -19,7 +19,7 @@ export default function Recommend() {
   const [data, setData] = useState<RecommendData | null>(null);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_POINT}/music`)
+    fetch(`${process.env.NEXT_PUBLIC_API_POINT}/profile?dog_id=1`)
       .then((res) => res.json())
       .then((json: RecommendData) => setData(json))
       .catch((err) => console.error('Error fetching data:', err));

@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useState, useEffect, useRef } from 'react';
 
 
-export default function mucispage() {
+export default function MusicPage() {
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
   const [audioBuffer, setAudioBuffer] = useState<AudioBuffer | null>(null);
   const [sourceNode, setSourceNode] = useState<AudioBufferSourceNode | null>(null);
@@ -33,9 +33,8 @@ export default function mucispage() {
     if (!musicId || !audioContext) return;
 
     try {
-      const res = await fetch(`http://localhost:8000/music/${musicId}`);
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_POINT}/get_misic?souund_id=${musicId}`);
       if (!res.ok) throw new Error("音楽が見つかりません");
-
       const arrayBuffer = await res.arrayBuffer();
       const decoded = await audioContext.decodeAudioData(arrayBuffer);
       setAudioBuffer(decoded);
