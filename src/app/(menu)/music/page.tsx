@@ -18,7 +18,8 @@ export default function MusicPage() {
 
   useEffect(() => {
     const initAudio = async () => {
-      const context = new (window.AudioContext || (window as any).webkitAudioContext)({
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      const context = new AudioCtx();({
         sampleRate: 192000,
       });
       setAudioContext(context);
