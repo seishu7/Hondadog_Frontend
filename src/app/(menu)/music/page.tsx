@@ -12,9 +12,9 @@ export default function MusicPage() {
   const [sourceNode, setSourceNode] = useState<AudioBufferSourceNode | null>(null);
   const [filterNode, setFilterNode] = useState<BiquadFilterNode | null>(null);
   const [currentGain, setCurrentGain] = useState<number>(0);
-  const [fileName, setFileName] = useState<string>('');
+  //const [fileName, setFileName] = useState<string>('');
   const [musicId, setMusicId] = useState("");
-  const sourceRef = useRef(null);
+  //const sourceRef = useRef(null);
 
   useEffect(() => {
     const initAudio = async () => {
